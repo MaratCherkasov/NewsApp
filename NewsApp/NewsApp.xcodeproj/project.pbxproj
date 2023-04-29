@@ -8,18 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		0F9AC7E929FC253100F1AD15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9AC7E829FC253100F1AD15 /* AppDelegate.swift */; };
-		0F9AC7ED29FC253100F1AD15 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9AC7EC29FC253100F1AD15 /* ViewController.swift */; };
+		0F9AC7ED29FC253100F1AD15 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9AC7EC29FC253100F1AD15 /* GeneralViewController.swift */; };
 		0F9AC7F229FC253200F1AD15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9AC7F129FC253200F1AD15 /* Assets.xcassets */; };
 		0F9AC7F529FC253200F1AD15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9AC7F329FC253200F1AD15 /* LaunchScreen.storyboard */; };
+		0F9AC7FD29FC27F900F1AD15 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9AC7FC29FC27F900F1AD15 /* TabBarController.swift */; };
+		0F9AC7FF29FC2A4C00F1AD15 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9AC7FE29FC2A4C00F1AD15 /* BusinessViewController.swift */; };
+		0F9AC80129FC2A8700F1AD15 /* TechnologyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9AC80029FC2A8700F1AD15 /* TechnologyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0F9AC7E529FC253100F1AD15 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9AC7E829FC253100F1AD15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0F9AC7EC29FC253100F1AD15 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0F9AC7EC29FC253100F1AD15 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		0F9AC7F129FC253200F1AD15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F9AC7F429FC253200F1AD15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F9AC7F629FC253200F1AD15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F9AC7FC29FC27F900F1AD15 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		0F9AC7FE29FC2A4C00F1AD15 /* BusinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
+		0F9AC80029FC2A8700F1AD15 /* TechnologyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnologyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +59,10 @@
 			isa = PBXGroup;
 			children = (
 				0F9AC7E829FC253100F1AD15 /* AppDelegate.swift */,
-				0F9AC7EC29FC253100F1AD15 /* ViewController.swift */,
+				0F9AC7FC29FC27F900F1AD15 /* TabBarController.swift */,
+				0F9AC7EC29FC253100F1AD15 /* GeneralViewController.swift */,
+				0F9AC7FE29FC2A4C00F1AD15 /* BusinessViewController.swift */,
+				0F9AC80029FC2A8700F1AD15 /* TechnologyViewController.swift */,
 				0F9AC7F129FC253200F1AD15 /* Assets.xcassets */,
 				0F9AC7F329FC253200F1AD15 /* LaunchScreen.storyboard */,
 				0F9AC7F629FC253200F1AD15 /* Info.plist */,
@@ -131,7 +140,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F9AC7ED29FC253100F1AD15 /* ViewController.swift in Sources */,
+				0F9AC80129FC2A8700F1AD15 /* TechnologyViewController.swift in Sources */,
+				0F9AC7FD29FC27F900F1AD15 /* TabBarController.swift in Sources */,
+				0F9AC7ED29FC253100F1AD15 /* GeneralViewController.swift in Sources */,
+				0F9AC7FF29FC2A4C00F1AD15 /* BusinessViewController.swift in Sources */,
 				0F9AC7E929FC253100F1AD15 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
