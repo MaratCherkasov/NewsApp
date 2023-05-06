@@ -14,6 +14,9 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
         let view = UIImageView()
         
         view.image = UIImage(named: "image") ?? UIImage.add
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        
         return view
     }()
     
@@ -22,6 +25,8 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
         
         view.backgroundColor = .black
         view.alpha = 0.5
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
         
         return view
     }()
@@ -46,11 +51,17 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Methods
+    func set(article: ArticleCellViewModel) {
+        titleLabel.text = article.title
+    }
+    
     // MARK: Private methods
     private func setupUI() {
-        addSubview(imageView)
-        addSubview(blackView)
-        addSubview(titleLabel)
+        addSubviews([imageView,
+                     blackView,
+                     titleLabel
+        ])
         
         setupConstraints()
     }

@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 final class GeneralViewController: UIViewController {
-    
     // MARK: - GUI Variables
     private lazy var searchBar: UISearchBar = {
        let searchBar = UISearchBar()
@@ -19,6 +18,7 @@ final class GeneralViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        
         let width = (view.frame.width - 15) / 2
         layout.itemSize = CGSize(width: width, height: width)
         layout.minimumLineSpacing = 5
@@ -32,29 +32,46 @@ final class GeneralViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.backgroundColor = .white
         
         return collectionView
     }()
     
     // MARK: - Properties
-
+    private var viewModel: GeneralViewModelProtocol
     // MARK: - Life cycle
+    init(viewModel: GeneralViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        self.setupViewModel()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        collectionView.register(GeneralCollectionViewCell.self,
+                                forCellWithReuseIdentifier: "GeneralCollectionViewCell")
+        
     }
     
     // MARK: - Methods
     
     // MARK: - Private methods
+    private func setupViewModel() {
+        viewModel.reloadData = { [weak self] in
+            self?.collectionView.reloadData()
+            
+        }
+    }
+    
     private func setupUI() {
         view.backgroundColor = .white
-        view.addSubview(searchBar)
-        view.addSubview(collectionView)
-        
-        collectionView.register(GeneralCollectionViewCell.self,
-                                forCellWithReuseIdentifier: "GeneralCollectionViewCell")
+        view.addSubviews([searchBar, collectionView])
         
         setupConstraints()
     }
@@ -76,7 +93,7 @@ final class GeneralViewController: UIViewController {
 extension GeneralViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        15
+        viewModel.numberOfCells
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -84,6 +101,8 @@ extension GeneralViewController: UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GeneralCollectionViewCell",
                                                             for: indexPath) as? GeneralCollectionViewCell else { return UICollectionViewCell() }
+        let article = viewModel.getArticle(for: indexPath.row)
+        cell.set(article: article)
         
         return cell
     }
@@ -91,5 +110,9 @@ extension GeneralViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension GeneralViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        
+        navigationController?.pushViewController(GeneralNewsCell(), animated: true)
+    }
 }
