@@ -23,7 +23,7 @@ final class NewsViewController: UIViewController {
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         
-        view.image = UIImage(named: "image") ?? UIImage.add
+        view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         
@@ -33,7 +33,6 @@ final class NewsViewController: UIViewController {
     private lazy var dateLabel: UILabel = {
        let label = UILabel()
         
-        label.text = "30.04.2023"
         label.font = .systemFont(ofSize: 12)
         label.textColor = .lightGray
         
@@ -43,7 +42,6 @@ final class NewsViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
        let label = UILabel()
         
-        label.text = "Insider shared layouts of redesigned Wallet and Health apps for iOS 17"
         label.font = .boldSystemFont(ofSize: 22)
         label.numberOfLines = 0
         label.textColor = .black
@@ -54,11 +52,6 @@ final class NewsViewController: UIViewController {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         
-        label.text = """
-A user under the nickname @Analyst941 posted mockups of the redesigned Wallet and Health apps on Twitter. According to him, this is exactly how this software will look in iOS 17.\n
-The bottom menu will appear in the Wallet application: through it, you can go to the list of saved digital keys and ids in one click. In addition, a button will appear to open the list of transactions on the Apple Card. The built-in search will help you quickly find the desired content in the application.\n
-The Summary section in the Health application will undergo a redesign, receiving cards with visual data — graphs and tables. It displays data on physical activity, heart rate, sleep quality, body weight, as well as other information.
-"""
         label.font = .systemFont(ofSize: 15)
         label.numberOfLines = 0
         label.textColor = .black
@@ -66,7 +59,19 @@ The Summary section in the Health application will undergo a redesign, receiving
         return label
     }()
     
+    // MARK: - Properties
+    private let viewModel: NewsViewModelProtocol
+    
     // MARK: - Life cycle
+    init(viewModel: NewsViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,6 +91,17 @@ The Summary section in the Health application will undergo a redesign, receiving
         descriptionLabel
         ])
         
+        titleLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
+        dateLabel.text = viewModel.date
+        
+        if let data = viewModel.imageData,
+           let image = UIImage(data: data) {
+            imageView.image = image
+        } else {
+            imageView.image = UIImage(named: "image")
+        }
+        
         setupConstraints()
     }
     
@@ -100,6 +116,7 @@ The Summary section in the Health application will undergo a redesign, receiving
         
         imageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(5)
+            make.height.equalTo(view.snp.width)
         }
         
         dateLabel.snp.makeConstraints { make in

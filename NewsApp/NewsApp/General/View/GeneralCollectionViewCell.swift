@@ -13,7 +13,7 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
         
-        view.image = UIImage(named: "image") ?? UIImage.add
+        view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         
@@ -54,6 +54,13 @@ final class GeneralCollectionViewCell: UICollectionViewCell {
     // MARK: - Methods
     func set(article: ArticleCellViewModel) {
         titleLabel.text = article.title
+        
+        if let data = article.imageData,
+           let image = UIImage(data: data) {
+            imageView.image = image
+        } else {
+            imageView.image = UIImage(named: "image")
+        }
     }
     
     // MARK: Private methods

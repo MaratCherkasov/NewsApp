@@ -14,8 +14,8 @@ final class DetailsCollectionViewCell: UICollectionViewCell {
         let view = UIImageView()
         
         view.image = UIImage(named: "image")
-        //view.layer.cornerRadius = 10
-        //view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
         view.layer.masksToBounds = true
         
@@ -68,7 +68,8 @@ final class DetailsCollectionViewCell: UICollectionViewCell {
     private func setupConstraints() {
         imageView.snp.makeConstraints { make in
             make.width.height.equalTo(self.frame.height)
-            make.top.leading.bottom.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.leading.equalToSuperview().inset(5)
         }
         
         titleLabel.snp.makeConstraints { make in

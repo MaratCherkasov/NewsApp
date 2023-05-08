@@ -58,7 +58,7 @@ final class BusinessViewController: UIViewController {
     
     private func setupConstraints() {
         collectionView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(5)
+            make.leading.trailing.equalToSuperview()
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -96,7 +96,7 @@ extension BusinessViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         
-        navigationController?.pushViewController(GeneralNewsCell(), animated: true)
+        //navigationController?.pushViewController(NewsViewController(), animated: true)
     }
 }
 

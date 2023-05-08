@@ -7,9 +7,16 @@
 
 import UIKit
 
-struct ArticleResponseObject {
+struct ArticleResponseObject: Codable {
     let title: String
     let description: String
-    let urlImage: String
-    let publishedAt: String
+    let urlToImage: String
+    let date: String
+    
+    enum CodingKeys: String, CodingKey {
+        case title
+        case description
+        case urlToImage
+        case date = "publishedAt"
+    }
 }
